@@ -8,6 +8,15 @@ import { UsersService } from "./users.service";
   model: {
     type: User,
   },
+  query: {
+    exclude: ["token", "password"],
+    join: {
+      posts: {
+        eager: true,
+        exclude: ["userId"],
+      },
+    },
+  },
 })
 @ApiTags("users")
 @Controller("users")
